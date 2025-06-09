@@ -1,0 +1,2 @@
+pytest>=7.0.0
+. # install stuned from local repo

@@ -4,6 +4,7 @@ data/
 cache/
 inputs/
 experiment_configs/
+envs/
 
 # vscode
 launch.json

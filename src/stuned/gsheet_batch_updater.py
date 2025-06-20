@@ -83,52 +83,10 @@ class GSheetBatchUpdater:
                 # update local csv
                 self.local_csv[row][col] = value
         affected_rows = list(affected_rows)
-        # Make sure to also update the "last update" time
-        # for row, col_value_dict in self.queue.items():
-        #     col_value_dict[MONITOR_LAST_UPDATE_COLUMN] = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-
-        # Use retrier_factory to log the updates to the CSV
-        # try:
-        #     if self.local_csv is None:
-        #         final_csv = retrier_factory(self.logger)(log_csv_for_concurrent)(
-        #             self.csv_path, report_csv_updates, use_socket=True
-        #         )
-        #
-        #         self.local_csv = final_csv
-        # except Exception as e:
-        #     self.logger.log(f"Exception while logging to CSV: {e}")
-        #     # don't clear the queue if logging to CSV failed
-        #     # we can retry later
-        #     self.logger.log("Not clearing the queue, will repeat later?")
-        #     self.last_update_status = False
-        #     return False
-
-        # if self.local_csv is None:
-        #     self.local_csv = final_csv
-        # else:
-        #     # update only the rows that were affected in the queue --> no need to write stuff to csv
-        #     for affected_row in affected_rows:
-        #         self.local_csv[affected_row] = final_csv[affected_row]
-
-        # Update the Google Sheet using our gsheet client
+        
         try:
             # TODO: only update if there are changes in columns
 
-            # Old way: use Alex's code
-            # self.gsheet_client.upload_csvs_to_spreadsheet(
-            #     self.spreadsheet_url,
-            #     [self.csv_path],
-            #     [self.worksheet_name],
-            #     single_rows_per_csv=[[0]],
-            # )
-            # self.gsheet_client.upload_csvs_to_spreadsheet(
-            #     self.spreadsheet_url,
-            #     [self.csv_path],
-            #     [self.worksheet_name],
-            #     single_rows_per_csv=[affected_rows],
-            # )
-            # Check if the columns have changed
-            # if 0 in affected_rows or "0" in affected_rows:
             self.gsheet_client.upload_csvs_to_spreadsheet_no_csv(
                 self.local_csv,
                 self.spreadsheet_url,

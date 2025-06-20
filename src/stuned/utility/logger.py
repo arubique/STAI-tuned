@@ -666,7 +666,7 @@ def try_to_log_in_socket_with_msg_type_in_batch(
 
 def log_to_sheet_in_batch(logger: RedneckLogger, column_value_pairs, sync=True, enabled=True):
     # if a dict is passed, covnert to a list
-    
+    print("im here!")
 
     final_column_value_pairs = []
     if isinstance(column_value_pairs, dict):
@@ -690,6 +690,7 @@ def log_to_sheet_in_batch(logger: RedneckLogger, column_value_pairs, sync=True, 
         final_column_value_pairs[i] = (escaped_key_name, value)
 
     # if logger.gspread_client is not None:
+    print(f'is socket client none? {logger.socket_client is None}')
     if logger.socket_client is not None:
         return try_to_log_in_socket_in_batch(logger, final_column_value_pairs, sync=sync, enabled=enabled)
     else:

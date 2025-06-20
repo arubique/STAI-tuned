@@ -20,9 +20,7 @@ class JobStatus:
     slurm_cancelled_statuses = ["CANCELLED", "CANCELLED+"]
     slurm_completed_statuses = ["COMPLETED", "COMPLETED+"]
 
-
 def get_slurm_job_status(slurm_status: str) -> str:
-    # TODO: rewrite this as a dict check xD
     if slurm_status in JobStatus.slurm_running_statuses:
         job_status = JobStatus.RUNNING
     elif slurm_status in JobStatus.slurm_completed_statuses:

@@ -7,3 +7,4 @@ matplotlib>=3.5.3
 gdown>=4.5.1
 torchvision>=0.14.1
 datasets>=3.6.0
+psutil>=5.9.0

@@ -18,7 +18,7 @@ from stnd.utility.data_utils import make_or_load_from_cache
 
 
 # local modules
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.dirname(__file__))))
 from utility.logger import make_logger
 from utility.utils import (
     remove_filename_extension,

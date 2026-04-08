@@ -24,7 +24,7 @@ from ._utils import (
     CachingDatasetWrapper,
     DatasetWrapperWithIndex,
     # functions
-    randomly_subsample_indices_uniformly
+    randomly_subsample_indices_uniformly,
     make_dataset_wrapper_with_transforms,
     make_default_data_path,
     fetch_data,
